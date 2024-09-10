@@ -1,20 +1,24 @@
 return {
-
     "neovim/nvim-lspconfig",
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "hrsh7th/nvim-cmp",
         "hrsh7th/cmp-nvim-lsp",
-
+        "L3MON4D3/LuaSnip",  
+        "saadparwaiz1/cmp_luasnip", 
     },
     config = function()
         require("mason").setup()
         require("mason-lspconfig").setup({
-            ensure_installed = {"lua_ls","clangd"}
+            ensure_installed = {"lua_ls", "clangd"}
         })
+        
         local cmp = require('cmp')
+        local luasnip = require('luasnip')  
         local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+        -- Setup LSP servers
         require("lspconfig").lua_ls.setup{}
         require("lspconfig").clangd.setup{
             {
@@ -24,16 +28,51 @@ return {
                 root_dir = require("lspconfig").util.root_pattern("compile_commands.json", ".git"),
                 settings = {
                     clangd = {
-                        -- Add extra flags for preprocessor macros
                         compile_commands_dir = "./",
                     },
                 },
-            }}
+            }
+        }
+
+        -- Configure nvim-cmp
         cmp.setup({
+            snippet = {
+                expand = function(args)
+                    luasnip.lsp_expand(args.body)
+                end,
+            },
+            mapping = {
+                -- Use Tab to navigate through completions
+                ['<Tab>'] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_next_item()
+                    elseif luasnip.expand_or_jumpable() then
+                        luasnip.expand_or_jump()
+                    else
+                        fallback()
+                    end
+                end, { 'i', 's' }),
+
+                -- Use Shift-Tab to navigate backwards through completions
+                ['<S-Tab>'] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.select_prev_item()
+                    elseif luasnip.jumpable(-1) then
+                        luasnip.jump(-1)
+                    else
+                        fallback()
+                    end
+                end, { 'i', 's' }),
+
+                -- Accept the currently selected completion with Enter
+                ['<CR>'] = cmp.mapping.confirm({ select = true }),
+            },
             sources = {
                 { name = 'nvim_lsp' },
+                { name = 'luasnip' },
                 { name = 'buffer' },
             },
         })
     end
 }
+
