@@ -29,3 +29,13 @@ vim.api.nvim_create_user_command('AutoSelectWhitespace', function()
     vim.api.nvim_win_set_cursor(0, {cursor_pos[1], end_col - 1})
 end, {})
 vim.api.nvim_set_keymap('n', '<leader>w', ':AutoSelectWhitespace<CR>', { noremap = true, silent = true })
+
+
+
+
+
+vim.api.nvim_set_keymap('n', '<leader>xx', '<cmd>TroubleToggle<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>xw', '<cmd>Trouble workspace_diagnostics<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>xd', '<cmd>Trouble document_diagnostics<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>xl', '<cmd>Trouble loclist<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>xq', '<cmd>Trouble quickfix<cr>', { noremap = true, silent = true })

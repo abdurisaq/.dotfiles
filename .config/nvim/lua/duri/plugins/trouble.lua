@@ -1,7 +1,9 @@
 return {
-  "folke/trouble.nvim",
+    "folke/trouble.nvim",
     config = function()
-        require('trouble').setup()
+        require("trouble").setup({
+            icons = true,
+            use_diagnostic_signs = true,
+        })
     end
-
 }
