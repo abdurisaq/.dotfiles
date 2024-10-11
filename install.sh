@@ -5,11 +5,8 @@ NEOVIM_VERSION="v0.10.1"  # Replace with the version you want
 NEOVIM_URL="https://github.com/neovim/neovim/releases/download/${NEOVIM_VERSION}/nvim-linux64.tar.gz"
 INSTALL_DIR="/usr/local/nvim-linux64"
 
-# Check if Neovim is already installed and exit if so
-if command -v nvim >/dev/null 2>&1; then
-    echo "Neovim is already installed at $(command -v nvim)"
-    exit 0
-fi
+command -v nvim >/dev/null 2>&1 && echo "Neovim is already installed at $(command -v nvim)" && exit 0
+
 
 # Download the tarball
 echo "Downloading Neovim ${NEOVIM_VERSION}..."
@@ -31,3 +28,9 @@ sudo ln -sf $INSTALL_DIR/bin/nvim /usr/local/bin/nvim
 rm -f nvim-linux64.tar.gz
 
 echo "Neovim ${NEOVIM_VERSION} installed successfully!"
+
+ln -sf "$HOME/.dotfiles/.config" "$HOME/.config" && echo "Symlink Created: ~/.config -> $HOME/.dotfiles/.config" || echo "Failed to create symlink."
+
+sudo apt update && sudo apt install -y zsh && echo "Zsh installed successfully." || echo "Zsh installation failed."
+
+ln -sf "$HOME/.dotfiles/.zshrc" "$HOME/.zshrc" && echo "Symlink created: ~/.zshrc -> $HOME/.dotfiles/.zshrc" || echo "Failed to create symlink."
