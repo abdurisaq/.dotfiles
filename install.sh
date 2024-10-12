@@ -34,3 +34,8 @@ ln -sf "$HOME/.dotfiles/.config" "$HOME/.config" && echo "Symlink Created: ~/.co
 sudo apt update && sudo apt install -y zsh && echo "Zsh installed successfully." || echo "Zsh installation failed."
 
 ln -sf "$HOME/.dotfiles/.zshrc" "$HOME/.zshrc" && echo "Symlink created: ~/.zshrc -> $HOME/.dotfiles/.zshrc" || echo "Failed to create symlink."
+
+
+ln -sf "$HOME/.dotfiles/.gitconfig" "$HOME/.gitconfig" && echo "Symlink created: ~/.gitconfig -> $HOME/.dotfiles/.gitconfig" || echo "Failed to create symlink."
+
+ln -sf "$HOME/.dotfiles/.tmux/.tmux.conf" "$HOME/.tmux.conf" && echo "Symlink created: ~/.tmux.conf -> $HOME/.dotfiles/.tmux/.tmux.conf" || echo "Failed to create symlink."
