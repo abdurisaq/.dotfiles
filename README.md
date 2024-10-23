@@ -50,7 +50,8 @@ Requirements
     git
     wget
     Linux/Unix-based system
-    [Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip) — Recommended for optimal viewing of icons and symbols in Neovim, Zsh, and Tmux.
+[Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip) — Recommended for optimal viewing of icons and symbols in Neovim, Zsh, and Tmux.
 Customization
+
 
 Feel free to edit any of the config files in the nvim/, .zshrc, or tmux/ directories to suit your personal preferences.
