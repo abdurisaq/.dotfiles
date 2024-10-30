@@ -39,3 +39,5 @@ ln -sf "$HOME/.dotfiles/.gitconfig" "$HOME/.gitconfig" && echo "Symlink created:
 sudo apt install -y tmux && echo "Tmux installed" || echo "Tmux installation failed."
 
 ln -sf "$HOME/.dotfiles/.tmux/.tmux.conf" "$HOME/.tmux.conf" && echo "Symlink created: ~/.tmux.conf -> $HOME/.dotfiles/.tmux/.tmux.conf" || echo "Failed to create symlink."
+
+command -v tmux && tmux source-file ~/.tmux.conf || echo "tmux is not installed"
