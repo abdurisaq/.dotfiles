@@ -4,7 +4,7 @@ NEOVIM_VERSION="v0.10.1"  # Replace with the version you want
 NEOVIM_URL="https://github.com/neovim/neovim/releases/download/${NEOVIM_VERSION}/nvim-linux64.tar.gz"
 INSTALL_DIR="/usr/local/nvim-linux64"
 
-
+which wget && echo "already installed" || (echo "installing now cuz not installed" && sudo apt update && sudo apt install wget)
 if command -v nvim >/dev/null 2>&1; then
     echo "Neovim is already installed at $(command -v nvim)"
 else
@@ -25,6 +25,8 @@ else
 
     echo "Neovim ${NEOVIM_VERSION} installed successfully!"
 fi
+
+which unzip && echo "already installed" || (echo "installing now cuz not installed" && sudo apt update && sudo apt install unzip)
 
 ln -sf "$HOME/.dotfiles/.config" "$HOME/.config" && echo "Symlink Created: ~/.config -> $HOME/.dotfiles/.config" || echo "Failed to create symlink."
 
