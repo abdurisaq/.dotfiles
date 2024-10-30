@@ -9,24 +9,20 @@ Features
 Installation
 1. Clone the Repository
 
-bash
-
 https://github.com/abdurisaq/dotfiles
-cd dotfiles
 
-2. Run the Installation Script
+2. cd dotfiles
+
+3. Run the Installation Script
 
 The install.sh script will download and install Neovim, Zsh, Tmux, and their associated configurations.
 
-bash
-
 ./install.sh
 
-3. Reload your terminal
+4. Reload your terminal
 
 Once the installation is complete, restart your terminal or source the .zshrc:
 
-bash
 
 source ~/.zshrc
 
