@@ -13,7 +13,6 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {"lua_ls", "clangd"}
         })
-        
         local cmp = require('cmp')
         local luasnip = require('luasnip')  
         local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -23,7 +22,10 @@ return {
         require("lspconfig").clangd.setup{
             {
                 capabilities = lsp_capabilities,
-                cmd = { "clangd", "--compile-commands-dir=./" },
+                cmd = { "clangd",
+                    "-I", "/mnt/c/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/um",
+                    "-I", "/mnt/c/Program Files (x86)/Windows Kits/10/Include/10.0.22621.0/shared",
+                    "--compile-commands-dir=./" },
                 filetypes = { "c", "cpp", "objc", "objcpp" },
                 root_dir = require("lspconfig").util.root_pattern("compile_commands.json", ".git"),
                 settings = {
