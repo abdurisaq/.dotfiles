@@ -11,7 +11,7 @@ return {
     config = function()
         require("mason").setup()
         require("mason-lspconfig").setup({
-            ensure_installed = {"lua_ls", "clangd"}
+            ensure_installed = {"lua_ls", "clangd", "typescript-language-server"}
         })
         local cmp = require('cmp')
         local luasnip = require('luasnip')  
@@ -35,6 +35,15 @@ return {
                 },
             }
         }
+
+        require("lspconfig").tsserver.setup({
+            capabilities = lsp_capabilities,
+            on_attach = function(client, bufnr)
+                -- Disable formatting with tsserver, because Prettier or other tools might handle formatting
+                client.server_capabilities.document_formatting = false
+            end
+        })
+
 
         -- Configure nvim-cmp
         cmp.setup({
