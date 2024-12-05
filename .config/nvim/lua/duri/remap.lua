@@ -46,9 +46,9 @@ function get_comment_delimiter()
     -- print(comment_notations[filetype] or "//")
     return comment_notations[filetype] or "//"  -- Default to "//" if not found
 end
-vim.api.nvim_set_keymap('n', '<leader>c', ':lua HighlightTrailingComment()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>c', ':lua DeleteTrailingComment()<CR>', { noremap = true, silent = true })
 
-function HighlightTrailingComment()
+function DeleteTrailingComment()
     local cursor_pos = vim.api.nvim_win_get_cursor(0)  -- Get cursor position: {line, column}
     local current_line = vim.api.nvim_get_current_line()  -- Get the current line text
     local cursor_col = cursor_pos[2]
