@@ -50,19 +50,19 @@ vim.api.nvim_set_keymap('n', '<leader>c', ':lua DeleteTrailingComment()<CR>', { 
 
 function DeleteTrailingComment()
     local cursor_pos = vim.api.nvim_win_get_cursor(0)  -- Get cursor position: {line, column}
-    local current_line = vim.api.nvim_get_current_line()  -- Get the current line text
+    local current_line = vim.api.nvim_get_current_line()  
     local cursor_col = cursor_pos[2]
 
     local comment_delim = get_comment_delimiter()
 
     local escaped_comment_delim = escape_pattern(comment_delim)
 
-    local start_col = current_line:find(escaped_comment_delim, cursor_col + 1)
+    local start_col = current_line:find(escaped_comment_delim)
 
     if start_col then
         -- Find the last space character before the comment delimiter
         local space_before_comment = current_line:sub(1, start_col - 1):match(".*%s()")
-        print(space_before_comment .. start_col)
+        -- print(space_before_comment .. start_col)
         -- If a space exists, include it in the selection, else start directly at the comment
         local selection_start = (space_before_comment or start_col) - 1
 
