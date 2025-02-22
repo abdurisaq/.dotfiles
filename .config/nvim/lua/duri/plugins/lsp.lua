@@ -11,13 +11,26 @@ return {
     config = function()
         require("mason").setup()
         require("mason-lspconfig").setup({
-            ensure_installed = {"lua_ls", "clangd", "typescript-language-server"}
+            ensure_installed = {"lua_ls", "clangd","hls"}
         })
         local cmp = require('cmp')
-        local luasnip = require('luasnip')  
+        local luasnip = require('luasnip')
         local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
         -- Setup LSP servers
+        -- require('lspconfig').hls.setup(){
+        --     filetypes = {'haskel', 'lhaskel', 'cabal'},
+        --     cmd ={"haskell-language-server-wrapper", "--lsp"},
+        --     settings = {
+        --         haskell = {
+        --             cabalFormattingProvider = "cabalfmt",
+        --             formattingProvider = "ormolu"
+        --         }
+        --     },
+        --     single_file_support = true
+        --
+        -- }
+        require'lspconfig'.hls.setup{}
         require("lspconfig").lua_ls.setup{}
         require("lspconfig").clangd.setup{
             {

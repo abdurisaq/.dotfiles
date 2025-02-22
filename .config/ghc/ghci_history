@@ -1,0 +1,34 @@
+findVarIds (And (Var "x1") (Not (Var "x1")))
+findVarIds (And (Var "x1") (Not (Var "x2")))
+findVarIds And (Var "x1") (Not (Var "x2"))
+findVarId's And (Var "x1") (Not (Var "x2"))
+findVarId's (And (Var "x1") (Not (Var "x2")))
+findVarIds (Iff (Var "x") (Var "y"))
+findVarIds (Var "x")
+findVarIds Iff (Var "x") (Var "y")
+fmap (*2) (ALCons 'a' 1 (ALCons 'b' 2 ALEmpty))
+fmap (*2) (ALCons 'a' 1 (ALCons 'b' 2 ALEmpty)
+fmap (+1) (ALCons 1 2 (ALCons 3 4 ALEmpty))
+myFoldr (:) "" "abcd"
+myFoldr (*) 1 [1,2,3,4]
+sumTailRec [1,2.1]
+sumTailRec [1..10]
+inList [1,2,3,4] 3
+inList [1,2,3,4] 7
+inList [1,2,3,4] 1
+inList "abcde" a
+c [1..10]
+inList [1,2,3,4] 3
+inList [1,2,3,4] 7
+inList [1,2,3,4] 1
+inList "abcde" a
+nList [1,2,3,4] 7
+inList [1,2,3,4] 1
+inList "abcde" a
+] 1
+inList "abcde" a
+c [1..10]
+inList [1,2,3,4] 3
+inList [1,2,3,4] 7
+inList [1,2,3,4] 1
+inList "abcde" a

@@ -83,3 +83,7 @@ vim.api.nvim_set_keymap('n', '<leader>xw', '<cmd>Trouble workspace_diagnostics<c
 vim.api.nvim_set_keymap('n', '<leader>xd', '<cmd>Trouble document_diagnostics<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>xl', '<cmd>Trouble loclist<cr>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>xq', '<cmd>Trouble quickfix<cr>', { noremap = true, silent = true })
+
+
+
+
