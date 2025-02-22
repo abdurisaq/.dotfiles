@@ -49,7 +49,7 @@ return {
             }
         }
 
-        require("lspconfig").tsserver.setup({
+        require("lspconfig").ts_ls.setup({
             capabilities = lsp_capabilities,
             on_attach = function(client, bufnr)
                 -- Disable formatting with tsserver, because Prettier or other tools might handle formatting
